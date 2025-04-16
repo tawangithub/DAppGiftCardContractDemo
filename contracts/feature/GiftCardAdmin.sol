@@ -1,0 +1,135 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "../base/GiftCardACL.sol";
+import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+contract GiftCardAdmin is GiftCardACL {
+    AggregatorV3Interface internal ethUsdPriceFeed;
+
+    event GiftCardTypeCreated(uint256 indexed id, uint256 balanceInUSD_e2, uint256 sellPriceInUSD_e2, uint256 waitingAfterBuyInMonths, uint256 expireAfterBuyInYears);
+    event GiftCardRedeemed(uint256 indexed id, uint256 amount);
+    event PriceFeedAddressUpdated(address indexed oldAddress, address indexed newAddress);
+    error InvalidPriceFeedAddress();
+    
+    /**
+     * @dev Updates the price feed address
+     * @param _newPriceFeedAddress The new price feed address
+     */
+    function updatePriceFeedAddress(address _newPriceFeedAddress) external onlyAdmin {
+        if (_newPriceFeedAddress == address(0)) revert InvalidPriceFeedAddress();
+        address oldAddress = address(ethUsdPriceFeed);
+        ethUsdPriceFeed = AggregatorV3Interface(_newPriceFeedAddress);
+        
+        // Verify the new price feed is working
+        try ethUsdPriceFeed.latestRoundData() returns (
+            uint80,
+            int256 price,
+            uint256,
+            uint256,
+            uint80
+        ) {
+            if (price <= 0) revert InvalidPriceFeedAddress();
+        } catch {
+            revert InvalidPriceFeedAddress();
+        }
+
+        emit PriceFeedAddressUpdated(oldAddress, _newPriceFeedAddress);
+    }
+
+     /**
+     * @dev Function for the shop owner to add the new type of gift card for selling in his shop
+     * @param _initialNumberGiftCards The number of gift cards that will be available for purchase from the shop
+     * @param _waitingAfterBuyInMonths The number of months after the buy date that the gift card can start using.
+     * @param _expireAfterBuyInYears The expiration date of the gift card
+     * @param _balanceInUSD_e2 The balance of the gift card in USD (supporting 2 decimal digits) (supporting 2 decimal digits)
+     * @param _sellPriceInUSD_e2 The sell price of the gift card in USD (supporting 2 decimal digits)
+     */
+    function createNewGiftCardTypeByShop(
+        uint32 _initialNumberGiftCards, // number of gift cards that will be available for purchase from the shop
+        uint32 _waitingAfterBuyInMonths, // 0 means no waiting time
+        uint32 _expireAfterBuyInYears, // 0 means no expiration date
+        uint256 _balanceInUSD_e2, // 10000 means 100 USD
+        uint256 _sellPriceInUSD_e2 // 10000 means 100 USD
+    ) external onlyAdmin {
+        uint256 newGiftCardTypeId = nextTypeOfGiftCardFromShopId++;
+        typesOfGiftCardFromShop[newGiftCardTypeId] = TypeOfGiftCardFromShop({
+            id: newGiftCardTypeId,
+            balanceInUSD_e2: _balanceInUSD_e2,
+            sellPriceInUSD_e2: _sellPriceInUSD_e2,
+            waitingAfterBuyInMonths: _waitingAfterBuyInMonths,
+            expireAfterBuyInYears: _expireAfterBuyInYears,
+            isActive: true,
+            numberOfRemainingGiftCards: _initialNumberGiftCards
+        });
+        emit GiftCardTypeCreated(newGiftCardTypeId, _balanceInUSD_e2, _sellPriceInUSD_e2, _waitingAfterBuyInMonths, _expireAfterBuyInYears);
+    }
+
+    /**
+     * @dev Function for the shop owner and customers to list the gift card types
+     * @return The gift card types
+     */
+    function listContractGiftCardTypes() external view returns (TypeOfGiftCardFromShop[] memory) {
+        TypeOfGiftCardFromShop[] memory giftCardTypes = new TypeOfGiftCardFromShop[](nextTypeOfGiftCardFromShopId);
+        uint256 index = 0;
+        for (uint256 i = 0; i < nextTypeOfGiftCardFromShopId; i++) {
+            giftCardTypes[index] = typesOfGiftCardFromShop[i];
+            index++;
+        }
+        return (giftCardTypes);
+    }
+    
+    /**
+     * @dev Function for the shop owner to set the active status of the gift card type
+     * @param _giftCardTypeId The id of the gift card type
+     * @param _isActive The active status of the gift card type
+     */ 
+    function setTypeOfGiftCardFromShopActive(uint256 _giftCardTypeId, bool _isActive) external onlyAdmin {
+        typesOfGiftCardFromShop[_giftCardTypeId].isActive = _isActive;
+    }
+
+     /**
+     * @dev Function for the shop owner to set the number of remaining gift cards in stock to be sold in the shop
+     * @param _giftCardTypeId The id of the gift card type
+     * @param _numberOfRemainingGiftCards The number of remaining gift cards
+     */
+    function setNumberOfRemainingGiftCards(uint256 _giftCardTypeId, uint256 _numberOfRemainingGiftCards) external onlyAdmin {
+        typesOfGiftCardFromShop[_giftCardTypeId].numberOfRemainingGiftCards = _numberOfRemainingGiftCards;
+    }
+
+    /**
+     * @dev Function for the shop owner to call when the customer has redeemed the gift card at the physicalshop
+     * by using the admin device to scan the QR code of the gift card voucher (generated by the card owner via website)
+     * then the admin device (with admin account) will call this function to actual redeem the gift card
+     * @param _id The id of the gift card
+     * @param _amountInUSD_e2 The amount of the gift card in USD (supporting 2 decimal digits)
+     */ 
+    function redeemGiftCard(uint256 _id, uint256 _amountInUSD_e2, uint256 _redeemId) external onlyAdmin() {
+        GiftCard storage card = giftCards[_id];
+        require(redeemId[_redeemId] == false, "This voucher is already redeemed");
+        require(block.timestamp >= card.startDate, "Gift card is still in the waiting period");
+        require(block.timestamp <= card.expirationDate || card.expirationDate == 0, "Gift card expired");
+        require(card.balanceInUSD_e2 >= _amountInUSD_e2, "Insufficient balance");
+        require(card.sellable == false && getApproved(_id) == address(0), "Cannot redeem on sale card");
+        card.balanceInUSD_e2 -= _amountInUSD_e2;
+        redeemId[_redeemId] = true;
+        emit GiftCardRedeemed(_id, _amountInUSD_e2);
+    }
+
+    /**
+     * @dev Function for the shop owner to withdraw all the ETH in the contract
+     */
+    function withdrawAllETH() external onlyOwner() { // only contract owner can call this function
+        uint256 balance = address(this).balance;
+        require(balance > 0, "No funds to withdraw");
+        (bool success, ) = payable(contractOwner).call{value: balance}("");
+        require(success, "Withdrawal failed");
+    }
+
+    function viewBalance() external onlyAdmin() view returns (uint256) {
+        return address(this).balance;
+    }
+
+    function setStaticTokenURI(string memory _staticTokenURI) external onlyOwner() {
+        staticTokenURI = _staticTokenURI;
+    }
+}

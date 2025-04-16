@@ -1,0 +1,783 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0xeD34567fb963C1aaC39c51472f0607517CBe3ba4",
+      "txHash": "0xddeabd6b5aeb5afa88192af12c3a2245947c373733f25b94cf053bbcd33d83eb",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xAE38064a20f46426c0000Af8F1B75FB3510e200E",
+      "txHash": "0x81810279d3e5cf819131f59e6c7e51a68c5ae318e95ad8d38b066018fbed53dc",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "6a4ea83ca266f72fd7f4da12a13b2d55106dfb9c03c39ebb39edb3299b74448c": {
+      "address": "0xdD3A15d85E2D4bA05B0131b78Bc2f5E9337598cb",
+      "txHash": "0x4c522c400d95da022a22043f928646c5ed8511b9f4a111de67866f3b4d138e0b",
+      "layout": {
+        "solcVersion": "0.8.20",
+        "storage": [
+          {
+            "label": "name",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:4"
+          },
+          {
+            "label": "symbol",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:5"
+          },
+          {
+            "label": "_ownerOf",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:7"
+          },
+          {
+            "label": "_balanceOf",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:8"
+          },
+          {
+            "label": "_approvals",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:9"
+          },
+          {
+            "label": "_operatorApprovals",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:10"
+          },
+          {
+            "label": "_tokenURIs",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_string_storage)",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:18"
+          },
+          {
+            "label": "giftCards",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_struct(GiftCard)650_storage)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:16"
+          },
+          {
+            "label": "myGiftCardsHistory",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_array(t_uint256)dyn_storage)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:21"
+          },
+          {
+            "label": "buyableListIds",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:24"
+          },
+          {
+            "label": "mapOfIdToBuyableListIndex",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:27"
+          },
+          {
+            "label": "redeemId",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_mapping(t_uint256,t_bool)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:31"
+          },
+          {
+            "label": "nextGiftCardId",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:33"
+          },
+          {
+            "label": "nextTypeOfGiftCardFromShopId",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:45"
+          },
+          {
+            "label": "typesOfGiftCardFromShop",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_mapping(t_uint256,t_struct(TypeOfGiftCardFromShop)688_storage)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:46"
+          },
+          {
+            "label": "staticTokenURI",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_string_storage",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:49"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_array(t_uint256)30_storage",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:51"
+          },
+          {
+            "label": "admins",
+            "offset": 0,
+            "slot": "46",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "GiftCardACL",
+            "src": "contracts/base/GiftCardACL.sol:12"
+          },
+          {
+            "label": "contractOwner",
+            "offset": 0,
+            "slot": "47",
+            "type": "t_address",
+            "contract": "GiftCardACL",
+            "src": "contracts/base/GiftCardACL.sol:44"
+          },
+          {
+            "label": "ethUsdPriceFeed",
+            "offset": 0,
+            "slot": "48",
+            "type": "t_contract(AggregatorV3Interface)45",
+            "contract": "GiftCardAdmin",
+            "src": "contracts/feature/GiftCardAdmin.sol:7"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_struct(InitializableStorage)53_storage": {
+            "label": "struct Initializable.InitializableStorage",
+            "members": [
+              {
+                "label": "_initialized",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "_initializing",
+                "type": "t_bool",
+                "offset": 8,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)30_storage": {
+            "label": "uint256[30]",
+            "numberOfBytes": "960"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_contract(AggregatorV3Interface)45": {
+            "label": "contract AggregatorV3Interface",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_array(t_uint256)dyn_storage)": {
+            "label": "mapping(address => uint256[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_string_storage)": {
+            "label": "mapping(uint256 => string)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(GiftCard)650_storage)": {
+            "label": "mapping(uint256 => struct GiftCardStorage.GiftCard)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(TypeOfGiftCardFromShop)688_storage)": {
+            "label": "mapping(uint256 => struct GiftCardStorage.TypeOfGiftCardFromShop)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(GiftCard)650_storage": {
+            "label": "struct GiftCardStorage.GiftCard",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "issuer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "issueDate",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "startDate",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "expirationDate",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "balanceInUSD_e2",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "sellable",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "sellPriceInUSD_e2",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "7"
+              }
+            ],
+            "numberOfBytes": "256"
+          },
+          "t_struct(TypeOfGiftCardFromShop)688_storage": {
+            "label": "struct GiftCardStorage.TypeOfGiftCardFromShop",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "balanceInUSD_e2",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "sellPriceInUSD_e2",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "expireAfterBuyInYears",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "waitingAfterBuyInMonths",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "isActive",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "numberOfRemainingGiftCards",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69",
+              "offset": 0,
+              "slot": "0"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73",
+              "offset": 8,
+              "slot": "0"
+            }
+          ]
+        }
+      }
+    },
+    "9e73b110d66a594bc4f859ffb4970347f0dce4d13ab4ffdea91185d417deba20": {
+      "address": "0xDC21Ec60C302522f43efB4d1e9Fdf743Ab1d04Af",
+      "txHash": "0xe34d8a4675f739b967e7dc557379e02942bcab191e312b886a54fdc8fdf8ca46",
+      "layout": {
+        "solcVersion": "0.8.20",
+        "storage": [
+          {
+            "label": "name",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:4"
+          },
+          {
+            "label": "symbol",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:5"
+          },
+          {
+            "label": "_ownerOf",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:7"
+          },
+          {
+            "label": "_balanceOf",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:8"
+          },
+          {
+            "label": "_approvals",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:9"
+          },
+          {
+            "label": "_operatorApprovals",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:10"
+          },
+          {
+            "label": "_tokenURIs",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_string_storage)",
+            "contract": "ERC721Compact",
+            "src": "contracts/base/ERC721Compact.sol:18"
+          },
+          {
+            "label": "giftCards",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_struct(GiftCard)650_storage)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:16"
+          },
+          {
+            "label": "myGiftCardsHistory",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_array(t_uint256)dyn_storage)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:21"
+          },
+          {
+            "label": "buyableListIds",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:24"
+          },
+          {
+            "label": "mapOfIdToBuyableListIndex",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:27"
+          },
+          {
+            "label": "redeemId",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_mapping(t_uint256,t_bool)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:31"
+          },
+          {
+            "label": "nextGiftCardId",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:33"
+          },
+          {
+            "label": "nextTypeOfGiftCardFromShopId",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:45"
+          },
+          {
+            "label": "typesOfGiftCardFromShop",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_mapping(t_uint256,t_struct(TypeOfGiftCardFromShop)688_storage)",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:46"
+          },
+          {
+            "label": "staticTokenURI",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_string_storage",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:49"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_array(t_uint256)30_storage",
+            "contract": "GiftCardStorage",
+            "src": "contracts/base/GiftCardStorage.sol:51"
+          },
+          {
+            "label": "admins",
+            "offset": 0,
+            "slot": "46",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "GiftCardACL",
+            "src": "contracts/base/GiftCardACL.sol:12"
+          },
+          {
+            "label": "contractOwner",
+            "offset": 0,
+            "slot": "47",
+            "type": "t_address",
+            "contract": "GiftCardACL",
+            "src": "contracts/base/GiftCardACL.sol:44"
+          },
+          {
+            "label": "ethUsdPriceFeed",
+            "offset": 0,
+            "slot": "48",
+            "type": "t_contract(AggregatorV3Interface)45",
+            "contract": "GiftCardAdmin",
+            "src": "contracts/feature/GiftCardAdmin.sol:7"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_struct(InitializableStorage)53_storage": {
+            "label": "struct Initializable.InitializableStorage",
+            "members": [
+              {
+                "label": "_initialized",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "_initializing",
+                "type": "t_bool",
+                "offset": 8,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)30_storage": {
+            "label": "uint256[30]",
+            "numberOfBytes": "960"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_contract(AggregatorV3Interface)45": {
+            "label": "contract AggregatorV3Interface",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_array(t_uint256)dyn_storage)": {
+            "label": "mapping(address => uint256[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_string_storage)": {
+            "label": "mapping(uint256 => string)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(GiftCard)650_storage)": {
+            "label": "mapping(uint256 => struct GiftCardStorage.GiftCard)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(TypeOfGiftCardFromShop)688_storage)": {
+            "label": "mapping(uint256 => struct GiftCardStorage.TypeOfGiftCardFromShop)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(GiftCard)650_storage": {
+            "label": "struct GiftCardStorage.GiftCard",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "issuer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "issueDate",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "startDate",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "expirationDate",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "balanceInUSD_e2",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "sellable",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "sellPriceInUSD_e2",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "7"
+              }
+            ],
+            "numberOfBytes": "256"
+          },
+          "t_struct(TypeOfGiftCardFromShop)688_storage": {
+            "label": "struct GiftCardStorage.TypeOfGiftCardFromShop",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "balanceInUSD_e2",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "sellPriceInUSD_e2",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "expireAfterBuyInYears",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "waitingAfterBuyInMonths",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "isActive",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "numberOfRemainingGiftCards",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69",
+              "offset": 0,
+              "slot": "0"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73",
+              "offset": 8,
+              "slot": "0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

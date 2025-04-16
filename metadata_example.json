@@ -1,0 +1,20 @@
+{
+    "name": "Demo DAPP NFT",
+    "description": "Please check the current balance and other details at the official website (https://dapp-giftcard.web.app/customer/view-card)",
+    "image": "https://white-managing-caterpillar-520.mypinata.cloud/ipfs/bafkreie2h4iqy4w62ikmagtqscxv7ts5xkz7oypiedfl2il7b37gv6f5ra",
+    "external_url": "https://dapp-giftcard.web.app/customer/view-card",
+    "attributes": [
+        {
+            "trait_type": "Current Balance",
+            "value": "please check at the official website"
+        },
+        {
+            "trait_type": "Expiration Date",
+            "value": "please check at the official website"
+        },
+        {
+            "trait_type": "Redeemable period",
+            "value": "please check at the official website"
+        }
+    ]
+}
