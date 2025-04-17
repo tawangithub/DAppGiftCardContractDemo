@@ -1,3 +1,4 @@
+Author: Tawan Achavanuntakul
 # Demo DApp GiftCard
 
 Note: This project requires Node.js version v20.11.1 or higher to run properly.
