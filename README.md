@@ -1,6 +1,6 @@
 # Demo DApp GiftCard
 
-Note: This project requires Node.js version 18.17.1 or higher to run properly.
+Note: This project requires Node.js version v20.11.1 or higher to run properly.
 
 This project demonstrates a concept of minting, trading including the redemption of the dApp giftCard with the compatibility with ERC721 token.
 To try to deploy smart contract on your localhost please follow the below steps
