@@ -20,7 +20,8 @@ npm hardhat node
 npm run hardhat run scripts/deploy.ts --network localhost
 ```
 
-To deploy on localhost, you don't have to do anything about .env file
+To deploy on localhost, you don't have to do anything about .env file.
+
 To deploy on testnet, please copy value from env.example to .env and edit the variable based on your own config.
 
 See the contract features detail in [docs/GiftCardFlow.md](docs/GiftCardFlow.md)
