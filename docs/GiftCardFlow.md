@@ -98,8 +98,7 @@ struct TypeOfGiftCardFromShop {
 
 ### System Events
 - `GiftCardIssued` - When a new gift card is created
-- `GiftCardTransferred` - When ownership changes
-- `GiftCardSold` - When a card is sold in the marketplace
+- `Transfer` - When ownership changes
 - `GiftCardSetSellable` - When a card's sale status changes
 - `GiftCardSetSellPrice` - When a card's price is updated
 - `GiftCardTypeCreated` - When a new gift card type is created
